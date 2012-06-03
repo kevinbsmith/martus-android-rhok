@@ -1,7 +1,9 @@
 package com.martus.android;
 
 import org.martus.clientside.ClientSideNetworkGateway;
+import org.martus.clientside.ClientSideNetworkHandlerUsingXmlRpcForNonSSL;
 import org.martus.common.crypto.MockMartusSecurity;
+import org.martus.common.network.NonSSLNetworkAPI;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -39,9 +41,11 @@ public class MatrusActivity extends Activity {
         buttonServerInfo.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	try {
-//        			MockMartusSecurity security = new MockMartusSecurity();
-//        			security.createKeyPair();
-                	ClientSideNetworkGateway gateway = ClientSideNetworkGateway.buildGateway(serverIPNew, "6228.1113.7277.8184.2116");
+        			MockMartusSecurity security = new MockMartusSecurity();
+        			security.createKeyPair();
+            		NonSSLNetworkAPI server = new ClientSideNetworkHandlerUsingXmlRpcForNonSSL(serverIPNew);
+            		String serverPublicKey = server.getServerPublicKey(security);
+            		ClientSideNetworkGateway gateway = ClientSideNetworkGateway.buildGateway(serverIPNew, serverPublicKey);
                 	gateway.getServerInfo();
             	} catch (Exception e) {
         			Log.e("error", "Failed starting MockMartusSecurity");
