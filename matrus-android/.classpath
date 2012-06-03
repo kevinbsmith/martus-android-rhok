@@ -6,7 +6,6 @@
 	<classpathentry kind="lib" path="lib/scprov-jdk15on-1.47.0.1.jar"/>
 	<classpathentry kind="lib" path="lib/icu4j_3_2_calendar.jar"/>
 	<classpathentry kind="lib" path="lib/persiancalendar.jar"/>
-	<classpathentry kind="lib" path="lib/MartusJars4AndroidWithoutBcjce.jar"/>
 	<classpathentry kind="lib" path="lib/ws-commons-util-1.0.2.jar"/>
 	<classpathentry kind="lib" path="lib/xmlrpc-client-3.1.3.jar"/>
 	<classpathentry kind="lib" path="lib/xmlrpc-common-3.1.3.jar"/>
@@ -16,6 +15,7 @@
 	<classpathentry kind="lib" path="lib/martus-jarVerify.jar"/>
 	<classpathentry kind="lib" path="lib/martus-swing.jar"/>
 	<classpathentry kind="lib" path="lib/martus-client.jar"/>
+	<classpathentry kind="lib" path="lib/martus-common.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
