@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 public class pingme extends Activity {
 
+	String serverIPNew = "http://50.112.118.184/RPC2";
 	String serverURL = "http://66.201.46.82:988/RPC2";
 	XmlRpcClient client = new XmlRpcClient();
 	String response;
@@ -34,9 +35,9 @@ public class pingme extends Activity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	try {
-            		Log.v("xmlrpc", "calling: "+serverURL);
+            		Log.v("xmlrpc", "calling: "+serverIPNew);
             		XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
-            		config.setServerURL(new URL(serverURL));
+            		config.setServerURL(new URL(serverIPNew));
             		XmlRpcClient client = new XmlRpcClient();
             		client.setConfig(config);
             		Vector params = new Vector();
