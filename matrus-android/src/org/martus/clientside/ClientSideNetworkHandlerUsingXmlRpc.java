@@ -293,7 +293,16 @@ public class ClientSideNetworkHandlerUsingXmlRpc
 	{
 		try
 		{
-			Vector result = (Vector)executeXmlRpc(serverName, method, params, port);
+			Object xmldata = executeXmlRpc(serverName, method, params, port);
+			Vector result = new Vector();//(Vector)executeXmlRpc(serverName, method, params, port);
+			if(xmldata instanceof Object[]){
+				Object[] dataToconvert = (Object[]) xmldata;
+				Vector data = new Vector();
+				for (int j = 0; j < dataToconvert.length; j++){
+					data.add(dataToconvert[j]);
+				}
+				result = data;
+			}
 			if(tm.getExpectedPublicKey() == null)
 				throw new Exception("Trust Manager never called");
 			return result;

@@ -31,6 +31,7 @@ import java.net.ConnectException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.Timestamp;
+import java.util.Arrays;
 import java.util.Vector;
 import org.apache.xmlrpc.client.XmlRpcClient;
 import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
@@ -67,7 +68,9 @@ public class ClientSideNetworkHandlerUsingXmlRpcForNonSSL extends NonSSLNetworkA
 	{
 		logging("MartusServerProxyViaXmlRpc:getServerInformation");
 		Vector params = new Vector();
-		return (Vector)callServer(server, CMD_SERVER_INFO, params);
+		Object test = callServer(server, CMD_SERVER_INFO, params);
+//		return (Vector)callServer(server, CMD_SERVER_INFO, params);
+		return (Vector) test;
 	}
 
 	// end MartusXmlRpc interface
@@ -80,8 +83,19 @@ public class ClientSideNetworkHandlerUsingXmlRpcForNonSSL extends NonSSLNetworkA
 			int port = ports[indexOfPortThatWorkedLast];
 			try
 			{
-				return callServerAtPort(serverName, method, params, port);
-			}
+				Object serverData = callServerAtPort(serverName, method, params, port);
+				if(serverData instanceof Object[]){
+					Object[] dataToconvert = (Object[]) serverData;
+					Vector data = new Vector();
+//					data.addAll(Arrays.asList(serverData));
+					for (int j = 0; j < dataToconvert.length; j++){
+						data.add(dataToconvert[j]);
+					}
+					return data;
+				}else{
+					return serverData;
+				}
+				}
 			catch(ConnectException e)
 			{
 				indexOfPortThatWorkedLast = (indexOfPortThatWorkedLast+1)%numPorts;

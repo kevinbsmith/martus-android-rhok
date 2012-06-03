@@ -30,8 +30,8 @@ import java.util.Vector;
 
 public class NetworkResponse
 {
-	public NetworkResponse(Vector rawServerReturnData)
-	{
+	public NetworkResponse(Vector rawServerReturnData){
+		
 		if(rawServerReturnData == null)
 		{
 			resultCode = NetworkInterfaceConstants.NO_SERVER;
@@ -41,6 +41,24 @@ public class NetworkResponse
 			resultCode = (String)rawServerReturnData.get(0);
 			if(rawServerReturnData.size() >= 2)
 				resultVector = (Vector)rawServerReturnData.get(1);
+		}
+	}
+	
+	public NetworkResponse(Object[] rawServerReturnData)
+	{
+		Vector data = new Vector();
+		for (int j = 0; j < rawServerReturnData.length; j++){
+			data.add(rawServerReturnData[j]);
+		}		
+		if(rawServerReturnData == null)
+		{
+			resultCode = NetworkInterfaceConstants.NO_SERVER;
+		}
+		else
+		{
+			resultCode = (String)data.get(0);
+			if(data.size() >= 2)
+				resultVector = (Vector)data.get(1);
 		}
 	}
 
