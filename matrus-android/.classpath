@@ -10,6 +10,12 @@
 	<classpathentry kind="lib" path="lib/ws-commons-util-1.0.2.jar"/>
 	<classpathentry kind="lib" path="lib/xmlrpc-client-3.1.3.jar"/>
 	<classpathentry kind="lib" path="lib/xmlrpc-common-3.1.3.jar"/>
+	<classpathentry kind="lib" path="lib/martus-clientSwing.jar"/>
+	<classpathentry kind="lib" path="lib/martus-hrdag.jar"/>
+	<classpathentry kind="lib" path="lib/martus-jarlogi.jar"/>
+	<classpathentry kind="lib" path="lib/martus-jarVerify.jar"/>
+	<classpathentry kind="lib" path="lib/martus-swing.jar"/>
+	<classpathentry kind="lib" path="lib/martus-client.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
